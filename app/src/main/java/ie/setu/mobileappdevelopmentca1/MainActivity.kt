@@ -3,6 +3,7 @@ package ie.setu.mobileappdevelopmentca1
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import timber.log.Timber
+import timber.log.Timber.i
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,6 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Timber.plant(Timber.DebugTree())
-        Timber.i("Main Activity started..")
+        i("Main Activity started...")
     }
 }

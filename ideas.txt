@@ -1,0 +1,38 @@
+the rule of thumb here is "The more your app is different from the Case Study, the more marks you can achieve". So, taking the model first, if you simply change the field names (String title, becomes String name say) that's not a change, it's a cut n paste exercise so straight away you're limiting how different your codebase will be from the solutions I give you. I'd be looking for different types altogether in the model, for example a new boolean field, and/or a "rating" (if it suited?) so that you can demonstrate to me you can work with a different model, not find/replace the case study model.
+Likewise, with the UI, if all your "screens" are identical to the case study (on top of the model) what exactly have you done, that's 
+As regards the features, they're listed in the Rubric(s) but are more of a guideline - you probably should have CRUD but you might not have any use for maps in your app so you need to replace that feature with some other feature of equal complexity, hence, you need to run your idea by me first, so I can give it the go ahead.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Assignment 1 Rubric:
+
+Components: add, list, edit, delete, pro features (searching, filtering, Google API usage)
+Persistence: stored in JSON
+UX: app navigation (via Menus), use of UI elements to complement UX (eg NumberPicker Vs EditText), Additional Features (eg Calendar Picker, DropDown Lists), pro features ((Advanced Navigation Up/Back, Nav Drawer)
+DX: data validation, adherence to android best practices, UI & Material Design Guidelines adhered to, Automated Testing (unit testing on models)
+Git: Commit history, tagged releases, branching model
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ASSIGNMENT 2 Rubric:
+
+Components: Add + list, delete + update, additional features (Basic Authentication, Maps, Camera etc.), pro features (Maps with Location, Google APIs++)
+Persistence: Cloud storage (firebase?)
+UX: app navigation (via Menus), use of UI elements to complement UX (e.g. DatePicker), additional features (nav drawer, splash screen), pro features (nav component, transitions, night mode)
+DX: data validation, adherence to android best practices, UI & Material Design Guidelines adhered to, MVP Design Pattern
+Git: Commit history, tagged releases, branching model
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+App Idea: Local Music Events Organizer
+
+Assignment 1 (JSON)
+Add/list/edit/delete local events you want to attend.
+Store ratings/reviews for past concerts.
+Search/filter by artist name or venue.
+Use Google Maps API to show venue location.
+
+Assignment 2 (Cloud/Firebase)
+Sync events across devices with Firebase.
+Add authentication (log in to see your saved gigs).
+Pro feature: Push notifications for nearby events.
+Night mode for late-night browsing.

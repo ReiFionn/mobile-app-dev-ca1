@@ -11,6 +11,7 @@ import timber.log.Timber.i
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var event = EventModel()
+    val events = ArrayList<EventModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +25,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             event.title = binding.eventTitle.text.toString()
-            if (event.title.isNotEmpty()) {
-                Timber.i("add Button Pressed: $event.title")
+            event.description = binding.eventDescription.text.toString()
+
+            if (event.title.isNotEmpty() && event.description.isNotEmpty()) {
+                i("ADD button pressed: ${event.title} + ${event.description}")
+                events.add(event)
+                i("All current events: $events")
             }
             else {
-                Snackbar.make(it,"Please enter a title", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(it,"Please enter a title and description", Snackbar.LENGTH_LONG).show()
             }
         }
     }

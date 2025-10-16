@@ -29,7 +29,9 @@ class EventActivity : AppCompatActivity() {
                 i("ADD button pressed: ${event.title} + ${event.description}")
                 app.events.add(event.copy())
                 for (i in app.events.indices)
-                { i("Event[$i]:${this.app.events[i]}") }
+                    { i("Event[$i]:${this.app.events[i]}") }
+                setResult(RESULT_OK)
+                finish()
             }
             else {
                 Snackbar.make(it,"Please enter a title and description", Snackbar.LENGTH_LONG).show()

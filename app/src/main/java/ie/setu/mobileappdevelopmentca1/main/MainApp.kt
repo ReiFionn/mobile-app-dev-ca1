@@ -13,8 +13,5 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Event started")
-        events.add(EventModel("One", "About one..."))
-        events.add(EventModel("Two", "About two..."))
-        events.add(EventModel("Three", "About three..."))
     }
 }

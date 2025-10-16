@@ -4,4 +4,5 @@
     <string name="hint_eventTitle">Event Title</string>
     <string name="hint_eventDescription">Event Description</string>
     <string name="menu_addEvent">Add</string>
+    <string name="menu_cancelEvent">Cancel</string>
 </resources>

@@ -2,7 +2,10 @@ package ie.setu.mobileappdevelopmentca1.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
+import ie.setu.mobileappdevelopmentca1.R
 import ie.setu.mobileappdevelopmentca1.databinding.ActivityMainBinding
 import ie.setu.mobileappdevelopmentca1.main.MainApp
 import ie.setu.mobileappdevelopmentca1.models.EventModel
@@ -17,6 +20,9 @@ class EventActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.toolbarAdd.title = title
+        setSupportActionBar(binding.toolbarAdd)
 
         app = application as MainApp
         i("Event Activity started...")
@@ -37,5 +43,19 @@ class EventActivity : AppCompatActivity() {
                 Snackbar.make(it,"Please enter a title and description", Snackbar.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_event, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

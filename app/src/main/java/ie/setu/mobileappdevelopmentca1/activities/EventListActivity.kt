@@ -3,9 +3,11 @@ package ie.setu.mobileappdevelopmentca1.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ie.setu.mobileappdevelopmentca1.R
 import ie.setu.mobileappdevelopmentca1.databinding.ActivityEventListBinding
 import ie.setu.mobileappdevelopmentca1.databinding.CardEventBinding
 import ie.setu.mobileappdevelopmentca1.main.MainApp
@@ -19,12 +21,19 @@ class EventListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEventListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
 
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = EventAdapter(app.events)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }
 

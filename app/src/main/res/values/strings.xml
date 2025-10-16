@@ -3,4 +3,5 @@
     <string name="button_addEvent">Add Event</string>
     <string name="hint_eventTitle">Event Title</string>
     <string name="hint_eventDescription">Event Description</string>
+    <string name="menu_addEvent">Add</string>
 </resources>

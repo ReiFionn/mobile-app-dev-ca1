@@ -15,6 +15,7 @@ class EventActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var event = EventModel()
     lateinit var app : MainApp
+    var edit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,24 +29,29 @@ class EventActivity : AppCompatActivity() {
         i("Event Activity started...")
 
         if (intent.hasExtra("event_edit")) {
+            edit = true
             event = intent.extras?.getParcelable("event_edit")!!
             binding.eventTitle.setText(event.title)
             binding.eventDescription.setText(event.description)
+            binding.btnAdd.setText(R.string.save_event)
         }
 
         binding.btnAdd.setOnClickListener() {
             event.title = binding.eventTitle.text.toString()
             event.description = binding.eventDescription.text.toString()
 
-            if (event.title.isNotEmpty() && event.description.isNotEmpty()) {
-                i("ADD button pressed: ${event.title} + ${event.description}")
-                app.events.create(event.copy())
-                setResult(RESULT_OK)
-                finish()
+            if (event.title.isEmpty() || event.description.isEmpty()) {
+                Snackbar.make(it,R.string.enter_event_details, Snackbar.LENGTH_LONG).show()
             }
             else {
-                Snackbar.make(it,"Please enter a title and description", Snackbar.LENGTH_LONG).show()
+                if (edit) {
+                    app.events.update(event.copy())
+                } else {
+                    app.events.create(event.copy())
+                }
             }
+            setResult(RESULT_OK)
+            finish()
         }
     }
 

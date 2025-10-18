@@ -9,10 +9,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.mobileappdevelopmentca1.R
 import ie.setu.mobileappdevelopmentca1.adapters.EventAdapter
+import ie.setu.mobileappdevelopmentca1.adapters.EventListener
 import ie.setu.mobileappdevelopmentca1.databinding.ActivityEventListBinding
 import ie.setu.mobileappdevelopmentca1.main.MainApp
+import ie.setu.mobileappdevelopmentca1.models.EventModel
 
-class EventListActivity : AppCompatActivity() {
+class EventListActivity : AppCompatActivity(), EventListener {
     lateinit var app: MainApp
     private lateinit var binding: ActivityEventListBinding
 
@@ -27,7 +29,7 @@ class EventListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = EventAdapter(app.events.findAll())
+        binding.recyclerView.adapter = EventAdapter(app.events.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -50,4 +52,16 @@ class EventListActivity : AppCompatActivity() {
             (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.events.findAll().size)
         }
     }
+
+    override fun onEventClick(event: EventModel) {
+        val launcherIntent = Intent(this, EventActivity::class.java)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private val getClickResult =
+        registerForActivityResult (ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.events.findAll().size)
+            }
+        }
 }

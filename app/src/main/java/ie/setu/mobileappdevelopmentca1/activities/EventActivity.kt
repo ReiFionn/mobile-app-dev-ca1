@@ -27,6 +27,12 @@ class EventActivity : AppCompatActivity() {
         app = application as MainApp
         i("Event Activity started...")
 
+        if (intent.hasExtra("event_edit")) {
+            event = intent.extras?.getParcelable("event_edit")!!
+            binding.eventTitle.setText(event.title)
+            binding.eventDescription.setText(event.description)
+        }
+
         binding.btnAdd.setOnClickListener() {
             event.title = binding.eventTitle.text.toString()
             event.description = binding.eventDescription.text.toString()

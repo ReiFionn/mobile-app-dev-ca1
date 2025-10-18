@@ -55,6 +55,7 @@ class EventListActivity : AppCompatActivity(), EventListener {
 
     override fun onEventClick(event: EventModel) {
         val launcherIntent = Intent(this, EventActivity::class.java)
+        launcherIntent.putExtra("event_edit", event)
         getClickResult.launch(launcherIntent)
     }
 

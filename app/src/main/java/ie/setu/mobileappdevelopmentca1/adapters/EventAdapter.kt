@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import ie.setu.mobileappdevelopmentca1.databinding.CardEventBinding
 import ie.setu.mobileappdevelopmentca1.models.EventModel
 
-class EventAdapter (private var events: List<EventModel>) :
+interface EventListener {
+    fun onEventClick(event: EventModel)
+}
+
+class EventAdapter (private var events: List<EventModel>, private val listener: EventListener) :
     RecyclerView.Adapter<EventAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -18,7 +22,7 @@ class EventAdapter (private var events: List<EventModel>) :
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val event = events[holder.adapterPosition]
-        holder.bind(event)
+        holder.bind(event, listener)
     }
 
     override fun getItemCount(): Int = events.size
@@ -26,9 +30,10 @@ class EventAdapter (private var events: List<EventModel>) :
     class MainHolder(private val binding: CardEventBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(event: EventModel) {
+        fun bind(event: EventModel, listener: EventListener) {
             binding.eventTitle.text = event.title
             binding.eventDescription.text = event.description
+            binding.root.setOnClickListener { listener.onEventClick(event) }
         }
     }
 }

@@ -27,7 +27,7 @@ class EventListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = EventAdapter(app.events)
+        binding.recyclerView.adapter = EventAdapter(app.events.findAll())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -47,7 +47,7 @@ class EventListActivity : AppCompatActivity() {
 
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == RESULT_OK) {
-            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.events.size)
+            (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.events.findAll().size)
         }
     }
 }

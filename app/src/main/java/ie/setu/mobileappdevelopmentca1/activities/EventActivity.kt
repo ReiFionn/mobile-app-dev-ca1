@@ -33,9 +33,7 @@ class EventActivity : AppCompatActivity() {
 
             if (event.title.isNotEmpty() && event.description.isNotEmpty()) {
                 i("ADD button pressed: ${event.title} + ${event.description}")
-                app.events.add(event.copy())
-                for (i in app.events.indices)
-                    { i("Event[$i]:${this.app.events[i]}") }
+                app.events.create(event.copy())
                 setResult(RESULT_OK)
                 finish()
             }

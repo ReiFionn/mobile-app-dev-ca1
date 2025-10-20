@@ -8,6 +8,7 @@ import ie.setu.mobileappdevelopmentca1.models.EventModel
 
 interface EventListener {
     fun onEventClick(event: EventModel)
+    fun onDeleteButtonClicked(event: EventModel)
 }
 
 class EventAdapter (private var events: List<EventModel>, private val listener: EventListener) :
@@ -33,6 +34,7 @@ class EventAdapter (private var events: List<EventModel>, private val listener: 
         fun bind(event: EventModel, listener: EventListener) {
             binding.eventTitle.text = event.title
             binding.eventDescription.text = event.description
+            binding.btnDelete.setOnClickListener { listener.onDeleteButtonClicked(event) }
             binding.root.setOnClickListener { listener.onEventClick(event) }
         }
     }

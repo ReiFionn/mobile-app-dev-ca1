@@ -1,7 +1,6 @@
 package ie.setu.mobileappdevelopmentca1.models
 
 import timber.log.Timber.i
-import kotlin.math.log
 
 var lastId = 0L
 
@@ -23,13 +22,22 @@ class EventMemStore : EventStore {
     }
 
     override fun update(event: EventModel) {
-        var foundEvent: EventModel? = events.find { e -> e.id == event.id }
+        val foundEvent: EventModel? = events.find { e -> e.id == event.id }
         if (foundEvent != null) {
             foundEvent.title = event.title
             foundEvent.description = event.description
             logAll()
         }
     }
+
+    override fun delete(event: EventModel) {
+        val foundEvent: EventModel? = events.find { e -> e.id == event.id }
+        if (foundEvent != null) {
+            events.remove(event)
+            logAll()
+        }
+    }
+
     fun logAll() {
         events.forEach{ i("$it")}
     }

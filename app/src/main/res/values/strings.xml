@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile App Development CA 1</string>
+    <string name="app_name">Local Events</string>
     <string name="button_addEvent">Add Event</string>
     <string name="hint_eventTitle">Event Title</string>
     <string name="hint_eventDescription">Event Description</string>

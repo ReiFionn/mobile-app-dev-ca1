@@ -59,6 +59,12 @@ class EventListActivity : AppCompatActivity(), EventListener {
         getClickResult.launch(launcherIntent)
     }
 
+    override fun onDeleteButtonClicked(event: EventModel) {
+        app.events.delete(event)
+        (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.events.findAll().size)
+        (binding.recyclerView.adapter)?.notifyDataSetChanged() //https://stackoverflow.com/questions/4198425/updating-the-list-view-when-the-adapter-data-changes
+    }
+
     private val getClickResult =
         registerForActivityResult (ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {

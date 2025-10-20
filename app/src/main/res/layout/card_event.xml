@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
-            tools:text="A Title" />
+            tools:text="A Title"
+            tools:ignore="RelativeOverlap" />
 
         <TextView
             android:id="@+id/eventDescription"
@@ -26,6 +27,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/eventTitle"
             tools:text="A Description" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/colorAccent"
+            android:padding="8dp"
+            android:stateListAnimator="@null"
+            android:text="@string/button_deleteEvent"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

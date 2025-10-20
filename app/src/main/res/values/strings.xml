@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile App Development CA 1</string>
+    <string name="app_name">Local Events</string>
     <string name="button_addEvent">Add Event</string>
     <string name="hint_eventTitle">Event Title</string>
     <string name="hint_eventDescription">Event Description</string>
@@ -7,4 +7,5 @@
     <string name="menu_cancelEvent">Cancel</string>
     <string name="enter_event_details"> Please enter all details </string>
     <string name="save_event"> Save Event </string>
+    <string name="button_deleteEvent">Delete Event</string>
 </resources>

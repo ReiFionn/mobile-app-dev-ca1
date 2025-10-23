@@ -1,10 +1,12 @@
 package ie.setu.mobileappdevelopmentca1.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ie.setu.mobileappdevelopmentca1.databinding.CardEventBinding
 import ie.setu.mobileappdevelopmentca1.models.EventModel
+import kotlin.toString
 
 interface EventListener {
     fun onEventClick(event: EventModel)
@@ -32,8 +34,11 @@ class EventAdapter (private var events: List<EventModel>, private val listener: 
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(event: EventModel, listener: EventListener) {
+            val dateText = "${event.day.toString()}/${event.month.toString()}/${event.year.toString()}"
+
             binding.eventTitle.text = event.title
             binding.eventDescription.text = event.description
+            binding.eventDate.text = dateText
             binding.btnDelete.setOnClickListener { listener.onDeleteButtonClicked(event) }
             binding.root.setOnClickListener { listener.onEventClick(event) }
         }

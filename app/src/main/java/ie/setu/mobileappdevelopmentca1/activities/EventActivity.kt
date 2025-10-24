@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
-import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.mobileappdevelopmentca1.R
 import ie.setu.mobileappdevelopmentca1.databinding.ActivityMainBinding
@@ -36,9 +37,14 @@ class EventActivity : AppCompatActivity() {
             today.get(Calendar.DAY_OF_MONTH)
         ) { view, year, month, day ->
             event.year = year
-            event.month = month
+            event.month = month+1
             event.day = day
         }
+
+        val eventTypes = resources.getStringArray(R.array.event_types)
+        val arrayAdapter = ArrayAdapter(this, R.layout.event_type_dropdown, eventTypes)
+        val eventTypeTV = findViewById<AutoCompleteTextView>(R.id.eventType)
+        eventTypeTV.setAdapter(arrayAdapter)
 
         app = application as MainApp
         i("Event Activity started...")
@@ -48,7 +54,8 @@ class EventActivity : AppCompatActivity() {
             event = intent.extras?.getParcelable("event_edit")!!
             binding.eventTitle.setText(event.title)
             binding.eventDescription.setText(event.description)
-            binding.eventDate.updateDate(event.year, event.month, event.day)
+            binding.eventDate.updateDate(event.year, event.month-1, event.day)
+            binding.eventType.setText(event.type, false) //https://stackoverflow.com/questions/29906928/setting-value-in-autocompletetextview
             binding.btnAdd.setText(R.string.save_event)
         }
 
@@ -56,10 +63,11 @@ class EventActivity : AppCompatActivity() {
             event.title = binding.eventTitle.text.toString()
             event.description = binding.eventDescription.text.toString()
             event.year = binding.eventDate.year
-            event.month = binding.eventDate.month
+            event.month = binding.eventDate.month+1 //months start at 0
             event.day = binding.eventDate.dayOfMonth
+            event.type = binding.eventType.text.toString()
 
-            if (event.title.isEmpty() && event.description.isEmpty() && event.year == 0) {
+            if (event.title.isEmpty() || event.description.isEmpty() || event.year == 0 || event.type.isEmpty()) {
                 Snackbar.make(it,R.string.enter_event_details, Snackbar.LENGTH_LONG).show()
             }
             else {

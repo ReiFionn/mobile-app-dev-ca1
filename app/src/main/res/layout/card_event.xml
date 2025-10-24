@@ -48,5 +48,15 @@
             android:textSize="20sp"
             android:layout_alignParentEnd="true"/>
 
+        <TextView
+            android:id="@+id/eventType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/eventDescription"
+            android:layout_toEndOf="@id/eventDescription"
+            android:layout_marginStart="8dp"
+            android:text="@string/eventType"
+            android:textSize="16sp"/>
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

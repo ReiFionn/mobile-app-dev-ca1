@@ -9,4 +9,13 @@
     <string name="save_event"> Save Event </string>
     <string name="button_deleteEvent">Delete Event</string>
     <string name="hint_eventDate">Event Date</string>
+    <string name="hint_eventType">Event Type</string>
+    <string name="eventType">A Type</string>
+
+    <string-array name="event_types">
+        <item>Pop</item>
+        <item>Rock</item>
+        <item>Electronic</item>
+        <item>Rap</item>
+    </string-array>
 </resources>

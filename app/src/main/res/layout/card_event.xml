@@ -49,6 +49,14 @@
             android:layout_alignParentEnd="true"/>
 
         <TextView
+            android:id="@+id/eventCapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnDelete"
+            android:layout_alignParentEnd="true"
+            tools:text="A Capacity" />
+
+        <TextView
             android:id="@+id/eventType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

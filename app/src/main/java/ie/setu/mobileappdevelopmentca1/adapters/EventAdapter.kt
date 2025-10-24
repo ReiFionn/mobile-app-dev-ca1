@@ -32,12 +32,14 @@ class EventAdapter (private var events: List<EventModel>, private val listener: 
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(event: EventModel, listener: EventListener) {
-            val dateText = "${event.day.toString()}/${event.month.toString()}/${event.year.toString()}"
+            val dateText = "${event.day}/${event.month}/${event.year}"
+            val capacityText = "Capacity: ${event.capacity}"
 
             binding.eventTitle.text = event.title
             binding.eventDescription.text = event.description
             binding.eventDate.text = dateText
             binding.eventType.text = event.type
+            binding.eventCapacity.text = capacityText
             binding.btnDelete.setOnClickListener { listener.onDeleteButtonClicked(event) }
             binding.root.setOnClickListener { listener.onEventClick(event) }
         }

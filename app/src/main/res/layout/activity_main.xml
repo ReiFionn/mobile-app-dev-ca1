@@ -102,6 +102,14 @@
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- https://www.geeksforgeeks.org/kotlin/number-picker-in-android/ -->
+                <NumberPicker
+                    android:id="@+id/eventCapacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:hint="@string/hint_eventCapacity" />
+
                 <Button
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"

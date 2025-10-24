@@ -46,6 +46,9 @@ class EventActivity : AppCompatActivity() {
         val eventTypeTV = findViewById<AutoCompleteTextView>(R.id.eventType)
         eventTypeTV.setAdapter(arrayAdapter)
 
+        binding.eventCapacity.maxValue = 100
+        binding.eventCapacity.minValue = 2
+
         app = application as MainApp
         i("Event Activity started...")
 
@@ -56,6 +59,7 @@ class EventActivity : AppCompatActivity() {
             binding.eventDescription.setText(event.description)
             binding.eventDate.updateDate(event.year, event.month-1, event.day)
             binding.eventType.setText(event.type, false) //https://stackoverflow.com/questions/29906928/setting-value-in-autocompletetextview
+            binding.eventCapacity.value = event.capacity
             binding.btnAdd.setText(R.string.save_event)
         }
 
@@ -66,8 +70,9 @@ class EventActivity : AppCompatActivity() {
             event.month = binding.eventDate.month+1 //months start at 0
             event.day = binding.eventDate.dayOfMonth
             event.type = binding.eventType.text.toString()
+            event.capacity = binding.eventCapacity.value
 
-            if (event.title.isEmpty() || event.description.isEmpty() || event.year == 0 || event.type.isEmpty()) {
+            if (event.title.isEmpty() || event.description.isEmpty() || event.year == 0 || event.type.isEmpty() || event.capacity == 0) {
                 Snackbar.make(it,R.string.enter_event_details, Snackbar.LENGTH_LONG).show()
             }
             else {

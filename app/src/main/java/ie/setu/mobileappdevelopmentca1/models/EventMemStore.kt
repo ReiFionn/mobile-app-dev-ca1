@@ -30,6 +30,7 @@ class EventMemStore : EventStore {
             foundEvent.month = event.month
             foundEvent.day = event.day
             foundEvent.type = event.type
+            foundEvent.capacity = event.capacity
             logAll()
         }
     }

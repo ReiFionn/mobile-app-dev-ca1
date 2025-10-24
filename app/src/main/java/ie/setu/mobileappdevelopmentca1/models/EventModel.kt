@@ -12,5 +12,5 @@ data class EventModel (
     var month: Int = 0,
     var day: Int = 0,
     var type: String = "",
-    //var price: Double = 0.0,
+    var capacity: Int = 0,
 ) : Parcelable

@@ -11,6 +11,7 @@
     <string name="hint_eventDate">Event Date</string>
     <string name="hint_eventType">Event Type</string>
     <string name="eventType">A Type</string>
+    <string name="hint_eventCapacity">Event Capacity</string>
 
     <string-array name="event_types">
         <item>Pop</item>

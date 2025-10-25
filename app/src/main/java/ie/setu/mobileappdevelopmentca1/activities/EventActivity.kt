@@ -78,12 +78,14 @@ class EventActivity : AppCompatActivity() {
             else {
                 if (edit) {
                     app.events.update(event.copy())
+                    setResult(RESULT_OK)
+                    finish()
                 } else {
                     app.events.create(event.copy())
+                    setResult(RESULT_OK)
+                    finish()
                 }
             }
-            setResult(RESULT_OK)
-            finish()
         }
     }
 

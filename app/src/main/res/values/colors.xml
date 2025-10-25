@@ -5,4 +5,5 @@
     <color name="colorPrimary">#D5C7FB</color>
     <color name="colorPrimaryDark">#190E3B</color>
     <color name="colorAccent">#6C659C</color>
+    <color name="date">#A83C66</color>
 </resources>

@@ -102,6 +102,23 @@
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:gravity="center">
+                
+                <TextView
+                    android:id="@+id/eventCapacityLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/capacityText"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="12dp"
+                    android:textStyle="bold" />
+                
                 <!-- https://www.geeksforgeeks.org/kotlin/number-picker-in-android/ -->
                 <NumberPicker
                     android:id="@+id/eventCapacity"
@@ -109,6 +126,15 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:hint="@string/hint_eventCapacity" />
+
+            </LinearLayout>
+                <!-- https://stackoverflow.com/questions/66198980/android-studio-kotlin-add-a-small-google-map-that-is-clickable-->
+<!--                <fragment-->
+<!--                    android:id="@+id/mapFragment"-->
+<!--                    android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"/>-->
 
                 <Button
                     android:id="@+id/btnAdd"

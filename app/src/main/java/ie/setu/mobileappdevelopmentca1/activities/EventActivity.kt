@@ -7,6 +7,12 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.DatePicker
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.mobileappdevelopmentca1.R
 import ie.setu.mobileappdevelopmentca1.databinding.ActivityMainBinding
@@ -15,7 +21,7 @@ import ie.setu.mobileappdevelopmentca1.models.EventModel
 import timber.log.Timber.i
 import java.util.Calendar
 
-class EventActivity : AppCompatActivity() {
+class EventActivity : AppCompatActivity() { //OnMapReadyCallback
     private lateinit var binding: ActivityMainBinding
     var event = EventModel()
     lateinit var app : MainApp
@@ -48,6 +54,9 @@ class EventActivity : AppCompatActivity() {
 
         binding.eventCapacity.maxValue = 100
         binding.eventCapacity.minValue = 2
+
+//        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+//        mapFragment.getMapAsync(this)
 
         app = application as MainApp
         i("Event Activity started...")
@@ -102,4 +111,10 @@ class EventActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+//    override fun onMapReady(googleMap: GoogleMap) {
+//        val waterford = LatLng(52.152999, -7.064298)
+//        googleMap.addMarker(MarkerOptions().position(waterford).title("Waterford"))
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(waterford, 12f))
+//    }
 }

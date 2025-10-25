@@ -13,6 +13,7 @@
     <string name="eventType">A Type</string>
     <string name="hint_eventCapacity">Event Capacity</string>
     <string name="searchbar_hint">Search Events</string>
+    <string name="capacityText">Capacity:</string>
 
     <string-array name="event_types">
         <item>Pop</item>

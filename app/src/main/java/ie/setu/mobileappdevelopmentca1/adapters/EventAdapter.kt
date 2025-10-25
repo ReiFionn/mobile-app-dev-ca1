@@ -14,6 +14,8 @@ interface EventListener {
 class EventAdapter (private var events: List<EventModel>, private val listener: EventListener) :
     RecyclerView.Adapter<EventAdapter.MainHolder>() {
 
+        private val displayedEvents = events.toMutableList()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = CardEventBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,11 +24,17 @@ class EventAdapter (private var events: List<EventModel>, private val listener: 
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val event = events[holder.adapterPosition]
+        val event = displayedEvents[holder.adapterPosition]
         holder.bind(event, listener)
     }
 
-    override fun getItemCount(): Int = events.size
+    override fun getItemCount(): Int = displayedEvents.size
+
+    fun submitList(newList: List<EventModel>) {
+        displayedEvents.clear()
+        displayedEvents.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     class MainHolder(private val binding: CardEventBinding) :
         RecyclerView.ViewHolder(binding.root) {

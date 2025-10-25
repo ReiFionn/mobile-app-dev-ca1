@@ -26,6 +26,11 @@ class EventMemStore : EventStore {
         if (foundEvent != null) {
             foundEvent.title = event.title
             foundEvent.description = event.description
+            foundEvent.year = event.year
+            foundEvent.month = event.month
+            foundEvent.day = event.day
+            foundEvent.type = event.type
+            foundEvent.capacity = event.capacity
             logAll()
         }
     }

@@ -35,6 +35,10 @@ class EventJSONStore(val context: Context) : EventStore {
         return foundEvent
     }
 
+    fun findByTitle(title: String): List<EventModel> {
+        return events.filter {it.title.contains(title, ignoreCase = true)}
+    }
+
     override fun create(event: EventModel) {
         event.id = generateRandomId()
         events.add(event)

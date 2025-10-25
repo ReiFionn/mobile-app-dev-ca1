@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.mobileappdevelopmentca1.R
 import ie.setu.mobileappdevelopmentca1.adapters.EventAdapter
@@ -13,10 +14,10 @@ import ie.setu.mobileappdevelopmentca1.adapters.EventListener
 import ie.setu.mobileappdevelopmentca1.databinding.ActivityEventListBinding
 import ie.setu.mobileappdevelopmentca1.main.MainApp
 import ie.setu.mobileappdevelopmentca1.models.EventModel
-
 class EventListActivity : AppCompatActivity(), EventListener {
     lateinit var app: MainApp
     private lateinit var binding: ActivityEventListBinding
+    private lateinit var adapter: EventAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,20 @@ class EventListActivity : AppCompatActivity(), EventListener {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = EventAdapter(app.events.findAll(), this)
+        adapter = EventAdapter(app.events.findAll(), this)
+        binding.recyclerView.adapter = adapter
+
+        binding.eventSV.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                handleSearch(newText)
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                handleSearch(query)
+                return true
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -71,4 +85,16 @@ class EventListActivity : AppCompatActivity(), EventListener {
                 (binding.recyclerView.adapter)?.notifyItemRangeChanged(0, app.events.findAll().size)
             }
         }
+
+    private fun handleSearch(query: String?) {
+        if (query.isNullOrEmpty()) adapter.submitList (app.events.findAll())
+        else filterEvents(query)
+    }
+
+    private fun filterEvents(query: String?) {
+        val filteredList = if (!query.isNullOrBlank())
+            app.events.findByTitle(query)
+        else app.events.findAll()
+        adapter.submitList(filteredList)
+    }
 }
